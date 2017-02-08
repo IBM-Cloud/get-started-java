@@ -127,7 +127,7 @@ Next, we'll add a NoSQL database to this application and set up the application 
 2. Select `Cloudant NoSQL DB` and Create the service.
 3. Select `Restage` when prompted. Bluemix will restart your application and provide the database credentials to your application using the `VCAP_SERVICES` environment variable. This environment variable is only available to the application when it is running on Bluemix.
 
-## 6. Use the database
+## 7. Use the database
 {: #usedatabase}
 We're now going to update your local code to point to this database. We'll store the credentials for the services in a properties file. This file will get used ONLY when the application is running locally. When running in Bluemix, the credentials will be read from the VCAP_SERVICES environment variable.
 
