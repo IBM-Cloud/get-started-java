@@ -132,10 +132,10 @@ Next, we'll add a NoSQL database to this application and set up the application 
 We're now going to update your local code to point to this database. We'll store the credentials for the services in a properties file. This file will get used ONLY when the application is running locally. When running in Bluemix, the credentials will be read from the VCAP_SERVICES environment variable.
 
 1. In Eclipse, open the file src/main/resources/cloudant.properties:
-```
-cloudant_url=
-```
-{: pre}
+  ```
+  cloudant_url=
+  ```
+  {: pre}
 
 2. In your browser open the Bluemix UI, select your App -> Connections -> Cloudant -> View Credentials
 
