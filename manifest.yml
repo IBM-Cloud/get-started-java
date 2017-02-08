@@ -1,7 +1,7 @@
 ---
 applications:
  - name: java-helloworld
-  random-route: true
-  path: target/JavaHelloWorldApp.war
-  memory: 512M
-  instances: 1
+   random-route: true
+   path: target/JavaHelloWorldApp.war
+   memory: 512M
+   instances: 1
