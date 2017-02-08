@@ -1,3 +1,4 @@
+
 # Getting started with Liberty on Bluemix
 To get started, we'll take you through a sample hello world app and help you set up a development environment.
 
@@ -11,8 +12,8 @@ You'll need [Git](https://git-scm.com/downloads){: new_window}, [Cloud Foundry C
 
 Now you're ready to start working with the app. Clone the repo and change the directory to where the sample app is located.
   ```bash
-  git clone https://github.com/IBM-Bluemix/java-helloworld
-  cd java-helloworld
+  git clone https://github.com/IBM-Bluemix/get-started-java
+  cd get-started-java
   ```
   {: pre}
 
