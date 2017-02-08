@@ -1,0 +1,7 @@
+target/*
+|target/JavaHelloWorldApp.war
+.settings
+.apt_generated
+.classpath
+.factorypath
+.project

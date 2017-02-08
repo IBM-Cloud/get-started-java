@@ -1,0 +1,15 @@
+<server>
+
+    <featureManager>
+        <feature>servlet-3.1</feature>
+    </featureManager>
+
+    <httpEndpoint id="defaultHttpEndpoint"
+                  host="*"
+                  httpPort="9080">
+        <tcpOptions soReuseAddr="true"/>
+    </httpEndpoint>
+
+    <application name="JavaHelloWorldApp" context-root="/JavaHelloWorldApp" location="${appLocation}" type="war"/>
+
+</server>

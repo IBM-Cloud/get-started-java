@@ -1,0 +1,5 @@
+---
+  applications:
+  - path: target/JavaHelloWorldApp.war
+    memory: 512M
+    instances: 1
