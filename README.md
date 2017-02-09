@@ -33,7 +33,7 @@ Run the app locally on Liberty.
   ```
   {: pre}
 
-View your app at: http://localhost:9080/JavaHelloWorldApp
+View your app at: http://localhost:9080/get-started-java
 
 
 ## 4. Deploy to Bluemix using command line
