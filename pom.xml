@@ -10,12 +10,12 @@
     </parent>
 
     <groupId>net.wasdev.wlp.sample</groupId>
-    <artifactId>JavaHelloWorldApp</artifactId>
+    <artifactId>GetStartedJava</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
-    <name>Liberty Profile Sample - Servlet</name>
-    <url>https://wasdev.github.io</url>
+    <name>Bluemix Getting Started</name>
+    <url>https://bluemix.net</url>
 
     <licenses>
         <license>
@@ -58,7 +58,7 @@
                     <artifactId>maven-war-plugin</artifactId>
                     <configuration>
                         <failOnMissingWebXml>false</failOnMissingWebXml>
-                        <warName>JavaHelloWorldApp</warName>
+                        <warName>GetStartedJava</warName>
                     </configuration>
                 </plugin>
                 <plugin>

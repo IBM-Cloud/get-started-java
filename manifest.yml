@@ -1,6 +1,6 @@
 ---
 applications:
- - name: java-helloworld
+ - name: JavaGetStarted
    random-route: true
    path: target/JavaHelloWorldApp.war
    memory: 512M
