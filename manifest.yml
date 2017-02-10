@@ -2,6 +2,6 @@
 applications:
  - name: JavaGetStarted
    random-route: true
-   path: target/JavaHelloWorldApp.war
+   path: target/JavaGetStarted.war
    memory: 512M
    instances: 1
