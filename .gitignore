@@ -1,5 +1,5 @@
 target/*
-|target/JavaHelloWorldApp.war
+|target/GetStartedJava.war
 .settings
 .apt_generated
 .classpath

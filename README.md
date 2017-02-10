@@ -33,7 +33,7 @@ Run the app locally on Liberty.
   ```
   {: pre}
 
-View your app at: http://localhost:9080/JavaHelloWorldApp
+View your app at: http://localhost:9080/GetStartedJava
 
 
 ## 4. Deploy to Bluemix using command line
@@ -45,7 +45,7 @@ The manifest.yml is provided in the sample.
 
   ```
   applications:
-  - path: target/JavaHelloWorldApp.war
+  - path: target/GetStartedJava.war
     memory: 512M
     instances: 1
     name: your-appname-here
@@ -98,9 +98,9 @@ IBM® Eclipse Tools for {{site.data.keyword.Bluemix_notm}} provides plug-ins tha
   - Continue the wizard with default options to Finish
 
 4. Run your application locally on Liberty:
-  - Right click on the `JavaHelloWorldApp` sample and select `Run As` -> `Run on Server` option
+  - Right click on the `GetStartedJava` sample and select `Run As` -> `Run on Server` option
   - Find and select the localhost Liberty server and press `Finish`
-  - In a few seconds, your application should be running at http://localhost:9080/JavaHelloWorldApp/
+  - In a few seconds, your application should be running at http://localhost:9080/GetStartedJava/
 
 5. Create a {{site.data.keyword.Bluemix_notm}} server definition:
   - In the `Servers` view, right-click -> `New` -> `Server`
@@ -109,7 +109,7 @@ IBM® Eclipse Tools for {{site.data.keyword.Bluemix_notm}} provides plug-ins tha
   - Select your `org` and `space` and click `Finish`
 
 6. Run your application on {{site.data.keyword.Bluemix_notm}}:
-  - Right click on the `JavaHelloWorldApp` sample and select `Run As` -> `Run on Server` option
+  - Right click on the `GetStartedJava` sample and select `Run As` -> `Run on Server` option
   - Find and select the `IBM Bluemix` and press `Finish`
   - A wizard will guide you with the deployment options. Be sure to choose a unique `Name` for your application
   - In a few minutes, your application should be running at the URL you chose.
@@ -144,6 +144,6 @@ We're now going to update your local code to point to this database. We'll store
 
 4. Your Liberty server in Eclipse should automatically pick up the changes and restart the application.
 
-  View your app at: http://localhost:9080/JavaHelloWorldApp/. Any names you enter into the app will now get added to the database.
+  View your app at: http://localhost:9080/GetStartedJava/. Any names you enter into the app will now get added to the database.
 
   Make any changes you want and re-deploy to Bluemix!
