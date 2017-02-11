@@ -1,6 +1,5 @@
 package wasdev.sample;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
@@ -16,7 +15,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-public class CloudantClientMgr {
+public class DatabaseConnMgr {
 
 	private static CloudantClient cloudant = null;
 	private static Database db = null;
@@ -36,34 +35,13 @@ public class CloudantClientMgr {
 		if (VCAP_SERVICES != null) {
 			// When running in Bluemix, the VCAP_SERVICES env var will have the credentials for all bound/connected services
 			// Parse the VCAP JSON structure looking for cloudant.
-			JsonObject obj = (JsonObject) new JsonParser().parse(VCAP_SERVICES);
-			Entry<String, JsonElement> dbEntry = null;
-			Set<Entry<String, JsonElement>> entries = obj.entrySet();
-			// Look for the VCAP key that holds the cloudant no sql db information
-			for (Entry<String, JsonElement> eachEntry : entries) {
-				if (eachEntry.getKey().toLowerCase().contains("cloudant")) {
-					dbEntry = eachEntry;
-					break;
-				}
-			}
-			if (dbEntry == null) {
-				System.out.println("Could not find cloudantNoSQLDB key in VCAP_SERVICES env variable");
-				return null;
-			}
-
-			obj = (JsonObject) ((JsonArray) dbEntry.getValue()).get(0);
-			serviceName = (String) dbEntry.getKey();
-			System.out.println("Service Name - " + serviceName);
-
-			obj = (JsonObject) obj.get("credentials");
-
-			url = obj.get("url").getAsString();
-
+			
+			url = VCAPHelper.getCredentials("cloudant").get("url").getAsString();
 
 		} else {
 			System.out.println("VCAP_SERVICES env var doesn't exist: running locally. Looking for credentials in cloudant.properties");
 			Properties properties = new Properties();
-			InputStream inputStream = CloudantClientMgr.class.getClassLoader().getResourceAsStream("cloudant.properties");
+			InputStream inputStream = DatabaseConnMgr.class.getClassLoader().getResourceAsStream("cloudant.properties");
 			try {
 				properties.load(inputStream);
 			} catch (IOException e) {
@@ -105,6 +83,6 @@ public class CloudantClientMgr {
 		return db;
 	}
 
-	private CloudantClientMgr() {
+	private DatabaseConnMgr() {
 	}
 }
