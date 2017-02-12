@@ -58,7 +58,7 @@ public class VCAPHelper {
 	
 	public static Properties getLocalProperties(String fileName){
 		Properties properties = new Properties();
-		InputStream inputStream = CloudantConnMgr.class.getClassLoader().getResourceAsStream(fileName);
+		InputStream inputStream = VCAPHelper.class.getClassLoader().getResourceAsStream(fileName);
 		try {
 			properties.load(inputStream);
 		} catch (IOException e) {

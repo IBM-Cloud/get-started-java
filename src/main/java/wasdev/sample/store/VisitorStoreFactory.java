@@ -20,11 +20,11 @@ public class VisitorStoreFactory {
 	private static VisitorStore instance;
 	
 	public static VisitorStore getInstance() {
-		CloudantVisitorStore cvif = new CloudantVisitorStore();	
-		if(cvif.getDB() == null){
-			return null;
+		CloudantStore cvif = new CloudantStore();	
+		if(cvif.getDB() != null){
+			instance = cvif;
 		}
-		instance = cvif;
+
 		//TODO: Add Mongo support
 		
 		return instance;
