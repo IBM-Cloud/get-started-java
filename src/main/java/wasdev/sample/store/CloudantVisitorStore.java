@@ -1,3 +1,18 @@
+/*******************************************************************************
+ * Copyright (c) 2017 IBM Corp.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *******************************************************************************/ 
 package wasdev.sample.store;
 
 import java.io.IOException;
@@ -5,9 +20,7 @@ import java.util.Collection;
 import java.util.List;
 
 import com.cloudant.client.api.Database;
-import com.cloudant.client.api.model.Response;
 
-import wasdev.sample.DatabaseConnMgr;
 import wasdev.sample.Visitor;
 
 public class CloudantVisitorStore implements VisitorStore{
@@ -16,7 +29,7 @@ public class CloudantVisitorStore implements VisitorStore{
 	
 	static {
 		try {
-			db = DatabaseConnMgr.getDB();
+			db = CloudantConnMgr.getDB();
 		} catch (Exception re) {
 			re.printStackTrace();
 		}
@@ -43,8 +56,9 @@ public class CloudantVisitorStore implements VisitorStore{
 	}
 
 	@Override
-	public void persist(Visitor td) {
-		db.save(td);
+	public Visitor persist(Visitor td) {
+		String id = db.save(td).getId();
+		return db.find(Visitor.class, id);
 	}
 
 	@Override
@@ -58,7 +72,8 @@ public class CloudantVisitorStore implements VisitorStore{
 
 	@Override
 	public void delete(String id) {
-		db.remove(id, null);
+		Visitor visitor = db.find(Visitor.class, id);
+		db.remove(id, visitor.get_rev());
 		
 	}
 

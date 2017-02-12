@@ -55,7 +55,7 @@ public interface VisitorStore {
    * @param td The ToDo to persist.
    * @return The persisted ToDo.  The ToDo will not have a unique ID..
    */
-  public void persist(Visitor vi);
+  public Visitor persist(Visitor vi);
 
   /**
    * Updates a ToDo in the store.

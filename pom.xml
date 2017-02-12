@@ -25,7 +25,6 @@
         </license>
     </licenses>
 
-
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -38,6 +37,13 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-rs-client</artifactId>
+            <version>3.1.1</version>
+            <scope>test</scope>
+        </dependency>
+        
+        <dependency>
             <groupId>org.apache.geronimo.specs</groupId>
             <artifactId>geronimo-servlet_3.0_spec</artifactId>
             <scope>provided</scope>
@@ -48,6 +54,7 @@
 			<artifactId>cloudant-client</artifactId>
 			<version>2.7.0</version>
 		</dependency>
+
     </dependencies>
 
     <build>

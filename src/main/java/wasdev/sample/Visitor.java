@@ -24,8 +24,8 @@ public class Visitor {
 	private String _rev;
 	private String name = null;
 
-	public Visitor(String visitorName) {
-		this.name = visitorName;
+	public Visitor() {
+		this.name = "";
 	}
 
 	/**
