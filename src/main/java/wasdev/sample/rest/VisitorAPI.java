@@ -43,21 +43,12 @@ public class VisitorAPI extends Application {
    * Gets all Visitors.
    * REST API example:
    * <code>
-   * POST http://localhost:9080/GetStartedJava/api/visitors
+   * GET http://localhost:9080/GetStartedJava/api/visitors
    * </code>
    * 
    * Response:
    * <code>
-   * [
-   *   {
-   *     "id":"112",
-   *     "title":"Bob"
-   *   },
-   *   {
-   *     "id":"123",
-   *     "title":"Ram"
-   *   }
-   * ]
+   * [ "Bob", "Jane" ]
    * </code>
    * @return A collection of all the Visitors
    */
