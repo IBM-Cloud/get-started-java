@@ -27,12 +27,12 @@ import com.google.gson.JsonObject;
 
 import wasdev.sample.Visitor;
 
-public class CloudantStore implements VisitorStore{
+public class CloudantVisitorStore implements VisitorStore{
 	
 	private Database db = null;
-	private static String databaseName = "mydb";
+	private static final String databaseName = "mydb";
 	
-	public CloudantStore(){
+	public CloudantVisitorStore(){
 		CloudantClient cloudant = createClient();
 		if(cloudant!=null){
 		 db = cloudant.database(databaseName, true);
