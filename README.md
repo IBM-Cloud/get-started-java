@@ -1,6 +1,5 @@
-
 # Getting started with Liberty on Bluemix
-To get started, we'll take you through a sample hello world app and help you set up a development environment.
+By following this guide, you'll set up a development environment, deploy an app locally and on Bluemix, and integrate a Bluemix database service in your app.
 
 ## Prerequisites
 
