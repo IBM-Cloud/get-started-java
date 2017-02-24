@@ -30,7 +30,7 @@ Run the app locally on Liberty.
 View your app at: http://localhost:9080/GetStartedJava
 
 
-## 4. Deploy to Bluemix using command line
+## 3. Deploy to Bluemix using command line
 
 To deploy to Bluemix using command line, it can be helpful to set up a manifest.yml file. The manifest.yml includes basic information about your app, such as the name, the location of your app, how much memory to allocate for each instance, and how many instances to create on startup. This is also where you'll choose your URL. [Learn more...](/docs/manageapps/depapps.html#appmanifest)
 
@@ -69,7 +69,7 @@ Push your application to Bluemix.
 
 This can take around two minutes. If there is an error in the deployment process you can use the command `cf logs <Your-App-Name> --recent` to troubleshoot.
 
-## 5. Developing and Deploying using Eclipse
+## 4. Developing and Deploying using Eclipse
 
 IBM® Eclipse Tools for Bluemix provides plug-ins that can be installed into an existing Eclipse environment to assist in integrating the developer's integrated development environment (IDE) with Bluemix.
 
@@ -107,7 +107,7 @@ Now you have your code running locally and on the cloud!
 The `IBM Eclipse Tools for Bluemix` provides many powerful features such as incremental updates, remote debugging, pushing packaged servers, etc. [Learn more](/docs/manageapps/eclipsetools/eclipsetools.html)
 
 
-## 6. Add a database
+## 5. Add a database
 
 Next, we'll add a NoSQL database to this application and set up the application so that it can run locally and on Bluemix.
 
@@ -115,7 +115,7 @@ Next, we'll add a NoSQL database to this application and set up the application 
 2. Select `Cloudant NoSQL DB` and Create the service.
 3. Select `Restage` when prompted. Bluemix will restart your application and provide the database credentials to your application using the `VCAP_SERVICES` environment variable. This environment variable is only available to the application when it is running on Bluemix.
 
-## 7. Use the database
+## 6. Use the database
 
 We're now going to update your local code to point to this database. We'll store the credentials for the services in a properties file. This file will get used ONLY when the application is running locally. When running in Bluemix, the credentials will be read from the VCAP_SERVICES environment variable.
 
