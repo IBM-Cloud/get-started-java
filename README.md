@@ -4,7 +4,7 @@ To get started, we'll take you through a sample hello world app and help you set
 
 ## Prerequisites
 
-You'll need [Git](https://git-scm.com/downloads), [Cloud Foundry CLI](https://github.com/cloudfoundry/cli#downloads), [Maven](https://maven.apache.org/download.cgi) and a [{{site.data.keyword.Bluemix}} account](https://console.ng.bluemix.net/registration/),
+You'll need [Git](https://git-scm.com/downloads), [Cloud Foundry CLI](https://github.com/cloudfoundry/cli#downloads), [Maven](https://maven.apache.org/download.cgi) and a [Bluemix account](https://console.ng.bluemix.net/registration/),
 
 ## 1. Clone the sample app
 
@@ -45,7 +45,7 @@ The manifest.yml is provided in the sample.
     host: your-appname-here
   ```
 
-Change both the *name* and *host* to a single unique name of your choice. Note that the *host* value will be used in your public url, for example, http://your-appname-here.mybluemix.net. If you already created an app from the {{site.data.keyword.Bluemix_notm}} UI but haven't pushed your code to it, you can use the same name value. Make sure the path points to the built application, for this example the location is `target/JavaHelloWorldApp.war`.
+Change both the *name* and *host* to a single unique name of your choice. Note that the *host* value will be used in your public url, for example, http://your-appname-here.mybluemix.net. If you already created an app from the Bluemix UI but haven't pushed your code to it, you can use the same name value. Make sure the path points to the built application, for this example the location is `target/JavaHelloWorldApp.war`.
 
 Choose your API endpoint
    ```
@@ -57,7 +57,7 @@ Replace the *API-endpoint* in the command with an API endpoint from the followin
 * https://api.eu-gb.bluemix.net # United Kingdom
 * https://api.au-syd.bluemix.net # Sydney
 
-Login to your {{site.data.keyword.Bluemix_notm}} account
+Login to your Bluemix account
   ```
   cf login
   ```
@@ -71,7 +71,7 @@ This can take around two minutes. If there is an error in the deployment process
 
 ## 5. Developing and Deploying using Eclipse
 
-IBM® Eclipse Tools for Bluemix provides plug-ins that can be installed into an existing Eclipse environment to assist in integrating the developer's integrated development environment (IDE) with {{site.data.keyword.Bluemix_notm}}.
+IBM® Eclipse Tools for Bluemix provides plug-ins that can be installed into an existing Eclipse environment to assist in integrating the developer's integrated development environment (IDE) with Bluemix.
 
 1. Download and install  [IBM Eclipse Tools for Bluemix](https://developer.ibm.com/wasdev/downloads/#asset/tools-IBM_Eclipse_Tools_for_Bluemix).
 
@@ -90,13 +90,13 @@ IBM® Eclipse Tools for Bluemix provides plug-ins that can be installed into an 
   - Find and select the localhost Liberty server and press `Finish`
   - In a few seconds, your application should be running at http://localhost:9080/GetStartedJava/
 
-5. Create a {{site.data.keyword.Bluemix_notm}} server definition:
+5. Create a Bluemix server definition:
   - In the `Servers` view, right-click -> `New` -> `Server`
   - Select `IBM` -> `IBM Bluemix` and follow the steps in the wizard.\
   - Enter your credentials and click `Next`
   - Select your `org` and `space` and click `Finish`
 
-6. Run your application on {{site.data.keyword.Bluemix_notm}}:
+6. Run your application on Bluemix:
   - Right click on the `GetStartedJava` sample and select `Run As` -> `Run on Server` option
   - Find and select the `IBM Bluemix` and press `Finish`
   - A wizard will guide you with the deployment options. Be sure to choose a unique `Name` for your application
