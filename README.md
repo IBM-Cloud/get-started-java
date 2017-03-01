@@ -107,7 +107,7 @@ IBM® Eclipse Tools for Bluemix provides plug-ins that can be installed into an 
 
 Now you have your code running locally and on the cloud!
 
-The `IBM Eclipse Tools for Bluemix` provides many powerful features such as incremental updates, remote debugging, pushing packaged servers, etc. [Learn more](/docs/manageapps/eclipsetools/eclipsetools.html)
+The `IBM Eclipse Tools for Bluemix` provides many powerful features such as incremental updates, remote debugging, pushing packaged servers, etc. [Learn more](https://console.ng.bluemix.net/docs/manageapps/eclipsetools/eclipsetools.html#eclipsetools)
 
 
 ## 5. Add a database
