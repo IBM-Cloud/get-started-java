@@ -2,7 +2,9 @@
 By following this guide, you'll set up a development environment, deploy an app locally and on Bluemix, and integrate a Bluemix database service in your app.
 
 <p align="center">
-  <img src="docs/GettingStarted.gif" width="300">
+  <kbd>
+    <img src="docs/GettingStarted.gif" width="300" style="1px solid">
+  </kbd>
 </p>
 
 ## Prerequisites
