@@ -37,7 +37,7 @@ View your app at: http://localhost:9080/GetStartedJava
 
 ## 3. Deploy to Bluemix using command line
 
-To deploy to Bluemix using command line, it can be helpful to set up a manifest.yml file. The manifest.yml includes basic information about your app, such as the name, the location of your app, how much memory to allocate for each instance, and how many instances to create on startup. This is also where you'll choose your URL. [Learn more...](/docs/manageapps/depapps.html#appmanifest)
+To deploy to Bluemix using command line, it can be helpful to set up a manifest.yml file. The manifest.yml includes basic information about your app, such as the name, the location of your app, how much memory to allocate for each instance, and how many instances to create on startup. This is also where you'll choose your URL. [Learn more...](https://console.bluemix.net/docs/manageapps/depapps.html#appmanifest)
 
 The manifest.yml is provided in the sample.
 
