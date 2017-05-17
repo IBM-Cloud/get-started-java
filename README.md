@@ -1,12 +1,6 @@
 # Getting started with Liberty on Bluemix
 By following this guide, you'll set up a development environment, deploy an app locally and on Bluemix, and integrate a Bluemix database service in your app.
 
-<p align="center">
-  <kbd>
-    <img src="docs/GettingStarted.gif" width="300" style="1px solid">
-  </kbd>
-</p>
-
 ## Prerequisites
 
 You'll need [Git](https://git-scm.com/downloads), [Cloud Foundry CLI](https://github.com/cloudfoundry/cli#downloads), [Maven](https://maven.apache.org/download.cgi) and a [Bluemix account](https://console.ng.bluemix.net/registration/),
@@ -15,7 +9,7 @@ You'll need [Git](https://git-scm.com/downloads), [Cloud Foundry CLI](https://gi
 
 Now you're ready to start working with the app. Clone the repo and change the directory to where the sample app is located.
   ```bash
-  git clone https://github.com/IBM-Bluemix/get-started-java
+  git clone -b autowiring --single-branch https://github.com/IBM-Bluemix/get-started-java
   cd get-started-java
   ```
 
@@ -32,8 +26,14 @@ Run the app locally on Liberty.
   mvn install liberty:run-server
   ```
 
-View your app at: http://localhost:9080/GetStartedJava
+View your app at: http://localhost:9080/cloudant
 
+You should see an error similar to:
+```
+Error 404: javax.servlet.UnavailableException: SRVE0203E: Servlet [com.test.CloudantTestServlet]: com.test.CloudantTestServlet was found, but is missing another required class. SRVE0206E: This error typically implies that the servlet was originally compiled with classes which cannot be located by the server. SRVE0187E: Check your class path to ensure that all classes required by the servlet are present.SRVE0210I: This problem can be debugged by recompiling the servlet using only the classes in the application's runtime class path SRVE0234I: Application class path=[com.ibm.ws.classloading.internal.ThreadContextClassLoader@43ee35c]
+```
+
+This is normal as the database is not autowired locally it is only autowired to your database in Bluemix when you bind the service to your application.
 
 ## 3. Deploy to Bluemix using command line
 
@@ -43,7 +43,7 @@ The manifest.yml is provided in the sample.
 
   ```
   applications:
-  - path: target/GetStartedJava.war
+  - path: target/GetStartedJava-1.0-CLOUDANT.war
     memory: 512M
     instances: 1
     name: your-appname-here
@@ -74,67 +74,23 @@ Push your application to Bluemix.
 
 This can take around two minutes. If there is an error in the deployment process you can use the command `cf logs <Your-App-Name> --recent` to troubleshoot.
 
-## 4. Developing and Deploying using Eclipse
-
-IBM® Eclipse Tools for Bluemix provides plug-ins that can be installed into an existing Eclipse environment to assist in integrating the developer's integrated development environment (IDE) with Bluemix.
-
-1. Download and install  [IBM Eclipse Tools for Bluemix](https://developer.ibm.com/wasdev/downloads/#asset/tools-IBM_Eclipse_Tools_for_Bluemix).
-
-2. Import this sample into Eclipse using `File` -> `Import` -> `Maven` -> `Existing Maven Projects` option.
-
-3. Create a Liberty server definition:
-  - In the `Servers` view right-click -> `New` -> `Server`
-  - Select `IBM` -> `WebSphere Application Server Liberty`
-  - Choose `Install from an archive or a repository`
-  - Enter a destination path (/Users/username/liberty)
-  - Choose `WAS Liberty with Java EE 7 Web Profile`
-  - Continue the wizard with default options to Finish
-
-4. Run your application locally on Liberty:
-  - Right click on the `GetStartedJava` sample and select `Run As` -> `Run on Server` option
-  - Find and select the localhost Liberty server and press `Finish`
-  - In a few seconds, your application should be running at http://localhost:9080/GetStartedJava/
-
-5. Create a Bluemix server definition:
-  - In the `Servers` view, right-click -> `New` -> `Server`
-  - Select `IBM` -> `IBM Bluemix` and follow the steps in the wizard.\
-  - Enter your credentials and click `Next`
-  - Select your `org` and `space` and click `Finish`
-
-6. Run your application on Bluemix:
-  - Right click on the `GetStartedJava` sample and select `Run As` -> `Run on Server` option
-  - Find and select the `IBM Bluemix` and press `Finish`
-  - A wizard will guide you with the deployment options. Be sure to choose a unique `Name` for your application
-  - In a few minutes, your application should be running at the URL you chose.
-
-Now you have your code running locally and on the cloud!
-
-The `IBM Eclipse Tools for Bluemix` provides many powerful features such as incremental updates, remote debugging, pushing packaged servers, etc. [Learn more](https://console.ng.bluemix.net/docs/manageapps/eclipsetools/eclipsetools.html#eclipsetools)
-
-
-## 5. Add a database
+## 4. Add a database
 
 Next, we'll add a NoSQL database to this application and set up the application so that it can run locally and on Bluemix.
 
 1. Log in to Bluemix in your Browser. Select your application and click on `Connect new` under `Connections`.
 2. Select `Cloudant NoSQL DB` and Create the service.
-3. Select `Restage` when prompted. Bluemix will restart your application and provide the database credentials to your application using the `VCAP_SERVICES` environment variable. This environment variable is only available to the application when it is running on Bluemix.
+3. Select `Restage` when prompted. Bluemix will restart your application and use autowiring to provide the database credentials to your application.
 
-## 6. Use the database
+## 5. Test your application on Bluemix
 
-We're now going to update your local code to point to this database. We'll store the credentials for the services in a properties file. This file will get used ONLY when the application is running locally. When running in Bluemix, the credentials will be read from the VCAP_SERVICES environment variable.
-
-1. In Eclipse, open the file src/main/resources/cloudant.properties:
+1. Go in your browser to:
   ```
-  cloudant_url=
+  http://getstartedjava-yourRoute.mybluemix.net/cloudant
   ```
 
-2. In your browser open the Bluemix UI, select your App -> Connections -> Cloudant -> View Credentials
-
-3. Copy and paste just the `url` from the credentials to the `url` field of the `cloudant.properties` file.
-
-4. Your Liberty server in Eclipse should automatically pick up the changes and restart the application.
-
-  View your app at: http://localhost:9080/GetStartedJava/. Any names you enter into the app will now get added to the database.
-
-  Make any changes you want and re-deploy to Bluemix!
+2. You should see the test pass:
+  ```
+  Added a new doc: { id: example_id, rev: null, date: "Wed May 17 17:50:45 UTC 2017"}
+  Test passed.
+  ```
