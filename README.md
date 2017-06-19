@@ -59,6 +59,7 @@ Choose your API endpoint
 
 Replace the *API-endpoint* in the command with an API endpoint from the following list.
 * https://api.ng.bluemix.net # US South
+* https://api.eu-de.bluemix.net # Germany
 * https://api.eu-gb.bluemix.net # United Kingdom
 * https://api.au-syd.bluemix.net # Sydney
 
