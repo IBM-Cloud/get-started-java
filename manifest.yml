@@ -3,5 +3,5 @@ applications:
  - name: GetStartedJava
    random-route: true
    path: target/GetStartedJava-1.0-CLOUDANT.war
-   memory: 512M
+   memory: 256M
    instances: 1
