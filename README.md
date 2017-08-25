@@ -2,7 +2,7 @@
 # Liberty on Bluemix getting started application
 The Bluemix Getting started tutorial for Liberty uses this sample application to provide you with a sample workflow for working with any Liberty app on Bluemix; you set up a development environment, deploy an app locally and on Bluemix, and integrate a Bluemix database service in your app.
 
-The Liberty app uses Liberty's [`mongodb-2.0` feature](https://www.ibm.com/support/knowledgecenter/en/SSEQTP_liberty/com.ibm.websphere.wlp.doc/ae/twlp_mongodb_create.html) and [MongoDB Java driver](https://mongodb.github.io/mongo-java-driver/) to add information to a database and then return information from a database to the UI.
+The Liberty app uses the [Cloudant Java Client](https://github.com/cloudant/java-cloudant) to add information to a database and then return information from a database to the UI.
 
 <p align="center">
   <kbd>
