@@ -2,7 +2,7 @@
 # Liberty on Bluemix getting started application
 The Bluemix Getting started tutorial for Liberty uses this sample application to provide you with a sample workflow for working with any Liberty app on Bluemix; you set up a development environment, deploy an app locally and on Bluemix, and integrate a Bluemix database service in your app.
 
-The Liberty app uses a [Cloudant noSQL DB service](https://console.bluemix.net/catalog/services/cloudant-nosql-db) to add information to a database and then return information from a database to the UI. To learn more about how the app connects to Cloudant, see the [Cloudant library for Liberty]().
+The Liberty app uses Liberty's [`mongodb-2.0` feature](https://www.ibm.com/support/knowledgecenter/en/SSEQTP_liberty/com.ibm.websphere.wlp.doc/ae/twlp_mongodb_create.html) and [MongoDB Java driver](https://mongodb.github.io/mongo-java-driver/) to add information to a database and then return information from a database to the UI.
 
 <p align="center">
   <kbd>
@@ -14,4 +14,4 @@ The following steps are the general procedure to set up and deploy your app. See
 
 ## Before you begin
 
-You'll need a [Bluemix account](https://console.ng.bluemix.net/registration/), [Git](https://git-scm.com/downloads) [Cloud Foundry CLI](https://github.com/cloudfoundry/cli#downloads) and [[Maven](https://maven.apache.org/download.cgi) installed.
+You'll need a [Bluemix account](https://console.ng.bluemix.net/registration/), [Git](https://git-scm.com/downloads) [Cloud Foundry CLI](https://github.com/cloudfoundry/cli#downloads) and [Maven](https://maven.apache.org/download.cgi) installed.
