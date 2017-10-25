@@ -10,7 +10,7 @@ The Liberty app uses the [Cloudant Java Client](https://github.com/cloudant/java
   </kbd>
 </p>
 
-The following steps are the general procedure to set up and deploy your app. See more detailed instructions in the [Getting started tutorial for Liberty](https://console.stage1.bluemix.net/docs/runtimes/liberty/getting-started.html#getting-started-tutorial).
+The following steps are the general procedure to set up and deploy your app. See more detailed instructions in the [Getting started tutorial for Liberty](https://console.bluemix.net/docs/runtimes/liberty/getting-started.html#getting-started-tutorial).
 
 ## Before you begin
 

@@ -17,9 +17,9 @@ package wasdev.sample.store;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Map.Entry;
 import java.util.Properties;
 import java.util.Set;
-import java.util.Map.Entry;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -34,17 +34,11 @@ public class VCAPHelper {
 			return null;
 		}
 		//Convert VCAP_SERVICES String to JSON
-		JsonObject obj = (JsonObject) new JsonParser().parse(VCAP_SERVICES);		
-		Entry<String, JsonElement> dbEntry = null;
-		Set<Entry<String, JsonElement>> entries = obj.entrySet();
+		JsonObject obj = (JsonObject) new JsonParser().parse(VCAP_SERVICES);
 		
 		// Look for the VCAP key that holds the service info
-		for (Entry<String, JsonElement> eachEntry : entries) {
-			if (eachEntry.getKey().toLowerCase().contains(serviceName)) {
-				dbEntry = eachEntry;
-				break;
-			}
-		}
+		Entry<String, JsonElement> dbEntry = matchService(obj.entrySet(), serviceName);
+		
 		if (dbEntry == null) {
 			System.out.println("VCAP_SERVICES: Could not find " + serviceName);
 			return null;
@@ -54,6 +48,26 @@ public class VCAPHelper {
 		System.out.println("VCAP_SERVICES: Found " + (String) dbEntry.getKey());
 
 		return (JsonObject) obj.get("credentials");
+	}
+	
+	private static Entry<String, JsonElement> matchService(Set<Entry<String, JsonElement>> entries, String serviceName) {
+		for (Entry<String, JsonElement> eachEntry : entries) {
+                        // CF service with 'cloudant' in the name
+			if (eachEntry.getKey().toLowerCase().contains(serviceName)) {
+				return eachEntry;
+			}
+			// user-provided service with 'cloudant' in the name
+			if (eachEntry.getKey().equals("user-provided")) {
+				JsonArray upss = eachEntry.getValue().getAsJsonArray();
+				for (JsonElement ups : upss) {
+					String name = ups.getAsJsonObject().get("name").getAsString();
+					if (name.toLowerCase().contains(serviceName)) {
+						return eachEntry;
+					}
+				}
+			}
+		}
+		return null;
 	}
 	
 	public static Properties getLocalProperties(String fileName){
