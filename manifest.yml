@@ -1,6 +1,6 @@
 ---
 applications:
- - name: GetStartedJava
+ - name: ArchVis
    random-route: true
    path: target/GetStartedJava.war
    memory: 256M
