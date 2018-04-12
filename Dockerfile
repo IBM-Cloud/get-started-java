@@ -12,7 +12,7 @@ EXPOSE 9080
 # docker run -p 9080:9080 --name myjavacontainer getstartedjava
 # Visit http://localhost:9080/GetStartedJava/
 
-## Push container to Bluemix
+## Push container to IBM Cloud
 # Install cli and dependencies: https://console.ng.bluemix.net/docs/containers/container_cli_cfic_install.html#container_cli_cfic_install
 # docker tag getstartedjava:latest registry.ng.bluemix.net/<my_namespace>/getstartedjava:latest
 # docker push registry.ng.bluemix.net/<my_namespace>/getstartedjava:latest

@@ -95,14 +95,14 @@ public class VisitorAPI extends Application {
      * @return The Visitor after it has been stored.  This will include a unique ID for the Visitor.
      */
     @POST
-    @Produces("application/text")
+    @Produces("application/json")
     @Consumes("application/json")
     public String newToDo(Visitor visitor) {
       if(store == null) {
-    	  return String.format("Hello %s!", visitor.getName());
+        return new Gson().toJson(visitor);
       }
-      store.persist(visitor);
-      return String.format("Hello %s! I've added you to the database.", visitor.getName());
+      Visitor storedVisitor = store.persist(visitor);
+      return new Gson().toJson(storedVisitor);
 
     }
 

@@ -48,7 +48,7 @@ public class CloudantVisitorStore implements VisitorStore{
 		String url;
 
 		if (System.getenv("VCAP_SERVICES") != null) {
-			// When running in Bluemix, the VCAP_SERVICES env var will have the credentials for all bound/connected services
+			// When running in IBM Cloud, the VCAP_SERVICES env var will have the credentials for all bound/connected services
 			// Parse the VCAP JSON structure looking for cloudant.
 			JsonObject cloudantCredentials = VCAPHelper.getCloudCredentials("cloudant");
 			if(cloudantCredentials == null){
