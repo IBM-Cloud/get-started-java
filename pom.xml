@@ -14,7 +14,7 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
-    <name>IBM Cloud Getting Started (with MongoDB Support)</name>
+    <name>IBM Cloud Getting Started</name>
     <url>https://bluemix.net</url>
 
     <licenses>
