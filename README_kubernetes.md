@@ -81,7 +81,7 @@ kubectl get pods -l app=get-started-java
 
 **Standard (Paid) Cluster:**
 
-1. Identify your LoadBalancer Ingress IP using `kubectl get service get-started-java-service`
+1. Identify your LoadBalancer Ingress IP using `kubectl get service get-started-java`
 2. Access your application at t `http://<EXTERNAL-IP>:9080/GetStartedJava`
 
 **Free Cluster:**
