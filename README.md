@@ -1,8 +1,7 @@
-
 # Liberty getting started application
 The Getting Started tutorial for Liberty uses this sample application to provide you with a sample workflow for working with any Liberty app on IBM Cloud or in IBM Cloud Private; you set up a development environment, deploy an app locally and on the cloud, and then integrate an IBM Cloud database service in your app.
 
-The Liberty app uses the [Cloudant Java Client](https://github.com/cloudant/java-cloudant) to add information to a database and then return information from a database to the UI.
+The Liberty app may use either the [Cloudant Java Client](https://github.com/cloudant/java-cloudant) or the [MongoDB Java Client](https://mongodb.github.io/mongo-java-driver) to add information to a database and then return information from a database to the UI.
 
 <p align="center">
   <kbd>

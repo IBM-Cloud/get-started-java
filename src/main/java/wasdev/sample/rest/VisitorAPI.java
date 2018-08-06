@@ -1,18 +1,18 @@
-/*******************************************************************************
- * Copyright (c) 2017 IBM Corp.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *    http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- *******************************************************************************/ 
+/******************************************************************************
+ * Copyright (c) 2018 IBM Corp.                                               *
+ *                                                                            *
+ * Licensed under the Apache License, Version 2.0 (the "License");            *
+ * you may not use this file except in compliance with the License.           *
+ * You may obtain a copy of the License at                                    *
+ *                                                                            *
+ *    http://www.apache.org/licenses/LICENSE-2.0                              *
+ *                                                                            *
+ * Unless required by applicable law or agreed to in writing, software        *
+ * distributed under the License is distributed on an "AS IS" BASIS,          *
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.   *
+ * See the License for the specific language governing permissions and        *
+ * limitations under the License.                                             *
+ ******************************************************************************/
 package wasdev.sample.rest;
 
 import java.util.ArrayList;
@@ -35,40 +35,40 @@ import wasdev.sample.store.VisitorStoreFactory;
 @ApplicationPath("api")
 @Path("/visitors")
 public class VisitorAPI extends Application {
-	
-	//Our database store
-	VisitorStore store = VisitorStoreFactory.getInstance();
 
-  /**
-   * Gets all Visitors.
-   * REST API example:
-   * <code>
-   * GET http://localhost:9080/GetStartedJava/api/visitors
-   * </code>
-   * 
-   * Response:
-   * <code>
-   * [ "Bob", "Jane" ]
-   * </code>
-   * @return A collection of all the Visitors
-   */
+    //Our database store
+    VisitorStore store = VisitorStoreFactory.getInstance();
+
+    /**
+     * Gets all Visitors.
+     * REST API example:
+     * <code>
+     * GET http://localhost:9080/GetStartedJava/api/visitors
+     * </code>
+     * 
+     * Response:
+     * <code>
+     * [ "Bob", "Jane" ]
+     * </code>
+     * @return A collection of all the Visitors
+     */
     @GET
     @Path("/")
     @Produces({"application/json"})
     public String getVisitors() {
-		
-		if (store == null) {
-			return "[]";
-		}
-		
-		List<String> names = new ArrayList<String>();
-		for (Visitor doc : store.getAll()) {
-			String name = doc.getName();
-			if (name != null){
-				names.add(name);
-			}
-		}
-		return new Gson().toJson(names);
+
+        if (store == null) {
+            return "[]";
+        }
+
+        List<String> names = new ArrayList<String>();
+        for (Visitor doc : store.getAll()) {
+            String name = doc.getName();
+            if (name != null){
+                names.add(name);
+            }
+        }
+        return new Gson().toJson(names);
     }
     
     /**
@@ -95,15 +95,13 @@ public class VisitorAPI extends Application {
      * @return The Visitor after it has been stored.  This will include a unique ID for the Visitor.
      */
     @POST
-    @Produces("application/json")
+    @Produces("application/text")
     @Consumes("application/json")
     public String newToDo(Visitor visitor) {
-      if(store == null) {
-        return new Gson().toJson(visitor);
-      }
-      Visitor storedVisitor = store.persist(visitor);
-      return new Gson().toJson(storedVisitor);
-
+        if(store == null) {
+            return String.format("Hello %s!", visitor.getName());
+        }
+        store.persist(visitor);
+        return String.format("Hello %s! I've added you to the database.", visitor.getName());
     }
-
 }
