@@ -1,0 +1,32 @@
+# Update <REGISTRY> <NAMESPACE> values before use
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: get-started-java
+  labels:
+    app: get-started-java
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: get-started-java
+  template:
+    metadata:
+      labels:
+        app: get-started-java
+    spec:
+      containers:
+      - name: get-started-java
+        image: <REGISTRY>/<NAMESPACE>/myapp:v1.0.0
+        ports:
+        - containerPort: 9080
+        imagePullPolicy: Always
+        env:
+        - name: CLOUDANT_URL
+          valueFrom:
+            secretKeyRef:
+              name: cloudant
+              key: url
+              optional: true
+
+
