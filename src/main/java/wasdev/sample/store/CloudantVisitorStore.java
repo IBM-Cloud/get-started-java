@@ -28,23 +28,23 @@ import com.google.gson.JsonObject;
 import wasdev.sample.Visitor;
 
 public class CloudantVisitorStore implements VisitorStore{
-
+    
     private Database db = null;
     private static final String databaseName = "mydb";
-
+    
     public CloudantVisitorStore(){
         CloudantClient cloudant = createClient();
         if(cloudant!=null){
-            db = cloudant.database(databaseName, true);
+         db = cloudant.database(databaseName, true);
         }
     }
-
+    
     public Database getDB(){
         return db;
     }
 
     private static CloudantClient createClient() {
-
+        
         String url;
 
         if (System.getenv("VCAP_SERVICES") != null) {
@@ -56,6 +56,8 @@ public class CloudantVisitorStore implements VisitorStore{
                 return null;
             }
             url = cloudantCredentials.get("url").getAsString();
+        } else if (System.getenv("CLOUDANT_URL") != null) {
+            url = System.getenv("CLOUDANT_URL");
         } else {
             System.out.println("Running locally. Looking for credentials in cloudant.properties");
             url = VCAPHelper.getLocalProperties("cloudant.properties").getProperty("cloudant_url");
@@ -75,7 +77,7 @@ public class CloudantVisitorStore implements VisitorStore{
             return null;
         }
     }
-
+    
     @Override
     public Collection<Visitor> getAll(){
         List<Visitor> docs;

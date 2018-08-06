@@ -1,4 +1,5 @@
-<server>
+    <!-- For use with Docker. server.xml for local use (mvn install liberty:run-server) is located at /src/wlp/server.xml-->
+    <server>
 
     <featureManager>
         <feature>beanValidation-1.1</feature>
@@ -17,12 +18,11 @@
         <feature>websocket-1.1</feature>
     </featureManager>
 
+
     <httpEndpoint id="defaultHttpEndpoint"
                   host="*"
                   httpPort="9080">
         <tcpOptions soReuseAddr="true"/>
     </httpEndpoint>
-
-    <application name="GetStartedJava" context-root="/GetStartedJava" location="${appLocation}" type="war"/>
 
 </server>

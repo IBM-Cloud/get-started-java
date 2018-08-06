@@ -1,6 +1,5 @@
-# For reference only
-
-FROM websphere-liberty
+FROM websphere-liberty:microProfile
+COPY server.xml /config/
 ADD target/GetStartedJava.war /opt/ibm/wlp/usr/servers/defaultServer/dropins/
 ENV LICENSE accept
 EXPOSE 9080
@@ -13,7 +12,6 @@ EXPOSE 9080
 # Visit http://localhost:9080/GetStartedJava/
 
 ## Push container to IBM Cloud
-# Install cli and dependencies: https://console.ng.bluemix.net/docs/containers/container_cli_cfic_install.html#container_cli_cfic_install
 # docker tag getstartedjava:latest registry.ng.bluemix.net/<my_namespace>/getstartedjava:latest
 # docker push registry.ng.bluemix.net/<my_namespace>/getstartedjava:latest
-# bx ic images # Verify new image
+# ibmcloud ic images # Verify new image
