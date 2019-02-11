@@ -216,9 +216,9 @@ public class MongoDbVisitorStore implements VisitorStore {
     }
 
     private static MongoClient createClient() {
-        String keyStoreName = getKeyStoreName(),
-               keyStorePass = getKeyStorePass();
-        System.out.println("Using TrustStore name \"" + keyStoreName +
+        String keyStoreName = null,
+               keyStorePass = null
+        //System.out.println("Using TrustStore name \"" + keyStoreName +
                            "\" and password \"" + keyStorePass + "\"");
         KeyStore keyStore = initializeKeyStore(keyStoreName, keyStorePass);
         String url        = null,
@@ -235,7 +235,7 @@ public class MongoDbVisitorStore implements VisitorStore {
                 return null;
             }
             url = mongoCredentials.get("uri").getAsString();
-            certString = mongoCredentials.get("ca_certificate_base64").getAsString();
+            //certString = mongoCredentials.get("ca_certificate_base64").getAsString();
         } else {
             System.out.println("Running locally. Looking for credentials in mongo.properties");
             url = VCAPHelper.getLocalProperties("mongo.properties").getProperty("mongo_url");
