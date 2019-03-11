@@ -217,7 +217,7 @@ public class MongoDbVisitorStore implements VisitorStore {
 
     private static MongoClient createClient() {
         
-        //Update the following lines if using Self Signed Certs
+        //Update the following lines if using Self Signed Certs and uncomment lines 223, 224, 241
         String keyStoreName = null,
                keyStorePass = null
         //System.out.println("Using TrustStore name \"" + keyStoreName +
