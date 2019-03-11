@@ -216,14 +216,17 @@ public class MongoDbVisitorStore implements VisitorStore {
     }
 
     private static MongoClient createClient() {
-        String keyStoreName = getKeyStoreName(),
-               keyStorePass = getKeyStorePass();
-        System.out.println("Using TrustStore name \"" + keyStoreName +
-                           "\" and password \"" + keyStorePass + "\"");
+        
+        //Update the following lines if using Self Signed Certs and uncomment lines 223, 224, 241
+        String keyStoreName = null,
+               keyStorePass = null;
+        //System.out.println("Using TrustStore name \"" + keyStoreName +
+        //                   "\" and password \"" + keyStorePass + "\"");
         KeyStore keyStore = initializeKeyStore(keyStoreName, keyStorePass);
         String url        = null,
                certString = null;
-
+        //End updates for self signed certs
+        
         if (System.getenv("VCAP_SERVICES") != null) {
             // When running in Bluemix, the VCAP_SERVICES env var will have the
             // credentials for all bound/connected services
@@ -235,7 +238,7 @@ public class MongoDbVisitorStore implements VisitorStore {
                 return null;
             }
             url = mongoCredentials.get("uri").getAsString();
-            certString = mongoCredentials.get("ca_certificate_base64").getAsString();
+            //certString = mongoCredentials.get("ca_certificate_base64").getAsString();
         } else {
             System.out.println("Running locally. Looking for credentials in mongo.properties");
             url = VCAPHelper.getLocalProperties("mongo.properties").getProperty("mongo_url");
