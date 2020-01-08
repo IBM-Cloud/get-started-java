@@ -34,8 +34,6 @@ public class CloudantVisitorStore implements VisitorStore{
     
     public CloudantVisitorStore(){
         CloudantClient cloudant = createClient();
-        cloudant.deleteDB(databaseName);
-        System.out.println("db is deleted!");
         if(cloudant!=null){
          db = cloudant.database(databaseName, true);
         }
@@ -122,6 +120,5 @@ public class CloudantVisitorStore implements VisitorStore{
     public int count() throws Exception {
         return getAll().size();
     }
-    
 
 }
