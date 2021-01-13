@@ -15,7 +15,7 @@ You'll need a [IBM Cloud account](https://console.ng.bluemix.net/registration/),
 
 ## Instructions
 
-**IBM Cloud Cloud Foundry**: [Getting started tutorial for Liberty](https://console.bluemix.net/docs/runtimes/liberty/getting-started.html#getting-started-tutorial).
+**IBM Cloud Cloud Foundry**: [Getting started tutorial for Liberty](https://cloud.ibm.com/docs/cloud-foundry?topic=cloud-foundry-getting-started-liberty).
 
 **IBM Cloud Kubernetes Service**: [README_kubernetes.md](README_kubernetes.md)
 
