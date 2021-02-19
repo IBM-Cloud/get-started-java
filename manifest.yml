@@ -1,7 +1,7 @@
 ---
 applications:
- - name: GetStartedJava
+ - name:GPS Project
    random-route: true
    path: target/GetStartedJava.war
-   memory: 256M
+   memory: 561M
    instances: 1
