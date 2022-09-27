@@ -1,5 +1,5 @@
 target/*
-|target/GetStartedJava.war
+target/GetStartedJava.war
 .settings
 .apt_generated
 .classpath
