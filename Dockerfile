@@ -1,6 +1,6 @@
 FROM websphere-liberty:microProfile
 COPY server.xml /config/
-ADD target/GetStartedJava-1.0-SNAPSHOT.war /opt/ibm/wlp/usr/servers/defaultServer/dropins/
+ADD target/GetStartedJava.war /opt/ibm/wlp/usr/servers/defaultServer/dropins/
 ENV LICENSE accept
 EXPOSE 9080
 
