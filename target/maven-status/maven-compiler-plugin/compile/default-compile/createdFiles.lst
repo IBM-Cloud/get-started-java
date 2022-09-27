@@ -1,0 +1,8 @@
+wasdev\sample\rest\VisitorAPI.class
+wasdev\sample\store\MongoDbVisitorStore.class
+wasdev\sample\store\VisitorStoreFactory.class
+wasdev\sample\store\VCAPHelper.class
+wasdev\sample\Visitor.class
+application\Application.class
+wasdev\sample\store\CloudantVisitorStore.class
+wasdev\sample\store\VisitorStore.class
