@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: "githubrepotestctl-3bea"
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: "githubrepotestctl-3bea"
+  template:
+    metadata:
+      labels:
+        app: "githubrepotestctl-3bea"
+    spec:
+      containers:
+        - name: "githubrepotestctl-3bea"
+          image: "githubrepotestregistry.azurecr.io/githubrepotestctl"
+          ports:
+          - containerPort: 9080
