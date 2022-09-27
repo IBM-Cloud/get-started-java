@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: get-started-java
-        image: <REGISTRY>/<NAMESPACE>/myapp:v1.0.0
+        image: rodrigo041294/getstartedjava:latest
         ports:
         - containerPort: 9080
         imagePullPolicy: Always
