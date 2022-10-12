@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+    name: "getstartedjava-b1d6"
+    labels:
+        app: "getstartedjava-b1d6"
+    annotations:
+        kubernetes.io/ingress.class: addon-http-application-routing
+spec:
+    rules:
+        - host: getstartedjavab261-getstartedjava-b1d6.6b530618837d4a56a606.eastus.aksapp.io
+          http:
+            paths:
+            - path: /
+              backend:
+                serviceName: "getstartedjava-b1d6"
+                servicePort: 9080
