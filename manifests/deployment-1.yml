@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: "getstartedjava-b1d6"
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: "getstartedjava-b1d6"
+  template:
+    metadata:
+      labels:
+        app: "getstartedjava-b1d6"
+    spec:
+      containers:
+        - name: "getstartedjava-b1d6"
+          image: "getstartedjavaregistrynmp.azurecr.io/getstartedjava"
+          ports:
+          - containerPort: 9080
