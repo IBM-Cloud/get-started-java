@@ -1,0 +1,51 @@
+on: [push]
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    
+    - uses: azure/docker-login@v1
+      with:
+        login-server: getstartedjavaregistrynmp.azurecr.io
+        username: ${{ secrets.acr_getstartedjavaregistrynmp_username }}
+        password: ${{ secrets.acr_getstartedjavaregistrynmp_password }}
+    
+    - name: Build and push image to ACR
+      id: build-image
+      run: |
+        docker build "$GITHUB_WORKSPACE/" -f  "Dockerfile" -t getstartedjavaregistrynmp.azurecr.io/getstartedjava:${{ github.sha }} --label dockerfile-path=Dockerfile
+        docker push getstartedjavaregistrynmp.azurecr.io/getstartedjava:${{ github.sha }}
+    
+    - uses: azure/k8s-set-context@v1
+      with:
+         kubeconfig: ${{ secrets.aks_getstartedjava_kubeConfig }}
+      id: login
+    
+    - name: Create namespace
+      run: |
+        namespacePresent=`kubectl get namespace | grep getstartedjavab261 | wc -l`
+        if [ $namespacePresent -eq 0 ]
+        then
+            echo `kubectl create namespace getstartedjavab261`
+        fi
+
+    - uses: azure/k8s-create-secret@v1
+      with:
+        namespace: getstartedjavab261
+        container-registry-url: getstartedjavaregistrynmp.azurecr.io
+        container-registry-username: ${{ secrets.acr_getstartedjavaregistrynmp_username }}
+        container-registry-password: ${{ secrets.acr_getstartedjavaregistrynmp_password }}
+        secret-name: getstartedjadockerauth
+       
+    - uses: azure/k8s-deploy@v1.2
+      with:
+        namespace: getstartedjavab261
+        manifests: |
+          manifests/deployment-1.yml
+          manifests/service-1.yml
+          manifests/ingress.yml
+        images: |
+          getstartedjavaregistrynmp.azurecr.io/getstartedjava:${{ github.sha }}
+        imagepullsecrets: |
+          getstartedjadockerauth
