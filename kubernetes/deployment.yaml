@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: get-started-java
-        image: getstartedjavaregistrynmp.azurecr.io/getstartedjava:latest
+        image: getstartedjavaregistrynmp.azurecr.io/getstartedjava
         ports:
         - containerPort: 9080
         imagePullPolicy: Always
