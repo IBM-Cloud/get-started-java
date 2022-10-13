@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: get-started-java
-        image: githubrepotestregistry.azurecr.io/githubrepotestctl
+        image: getstartedjava.azurecr.io/postgres:latest
         ports:
         - containerPort: 9080
         imagePullPolicy: Always
