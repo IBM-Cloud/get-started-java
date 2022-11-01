@@ -11,7 +11,7 @@ env:
 phases:
   install:
     runtime-versions:
-      java: openjdk8
+      java: corretto17
   pre_build:
     commands:
       - echo Ingresando a AWS ECR...
