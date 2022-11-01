@@ -1,0 +1,29 @@
+version: 0.2
+
+env:
+  variables:
+    AWS_ACCOUNT_ID: "452911533244"
+    CLUSTER: "prueba"
+    SERVICE: "appjava-service"
+    IMAGE_REPO_NAME: "myapp"
+    IMAGE_TAG: "v1.0.0"
+
+phases:
+  pre_build:
+    commands:
+      - echo Ingresando a AWS ECR...
+      - eval $(aws ecr get-login --no-include-email --region us-west-2)
+
+  build:
+    commands:
+      - echo Maven
+      - mvn clean install
+      - echo Creando imagen Docker
+      - docker build -t $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG .
+      - echo Copiando imagen de Docker a repositorio...
+      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
+
+  post_build:
+    commands:
+      - echo actualizando servicio fargate...
+      - aws ecs update-service --cluster $CLUSTER --service $SERVICE --force-new-deployment
