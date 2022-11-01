@@ -9,6 +9,9 @@ env:
     IMAGE_TAG: "v1.0.0"
 
 phases:
+  install:
+    runtime-versions:
+      java: openjdk8
   pre_build:
     commands:
       - echo Ingresando a AWS ECR...
