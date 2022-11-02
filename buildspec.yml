@@ -11,7 +11,7 @@ env:
 phases:
   install:
     runtime-versions:
-      java: corretto17
+      java: corretto11
   pre_build:
     commands:
       - echo Ingresando a AWS ECR...
@@ -20,7 +20,6 @@ phases:
   build:
     commands:
       - echo Maven empezar clean and install
-      - mvn clean
       - mvn install
       - echo Creando imagen Docker
       - docker build -t $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG .
