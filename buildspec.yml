@@ -3,7 +3,7 @@ version: 0.2
 env:
   variables:
     AWS_ACCOUNT_ID: "452911533244"
-    CLUSTER: "prueba"
+    CLUSTER: "pruebas"
     SERVICE: "appjava-service"
     IMAGE_REPO_NAME: "myapp"
     IMAGE_TAG: "v1.0.0"
