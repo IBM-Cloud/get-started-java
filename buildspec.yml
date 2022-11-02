@@ -7,6 +7,7 @@ env:
     SERVICE: "appjava-service"
     IMAGE_REPO_NAME: "myapp"
     IMAGE_TAG: "v1.0.0"
+    AWS_DEFAULT_REGION: "us-west-2"
     
 
 phases:
@@ -31,7 +32,7 @@ phases:
   pre_build:
     commands:
       - echo Ingresando a AWS ECR...
-      - eval $(aws ecr get-login --no-include-email --region us-west-2)
+      - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
 
   build:
     commands:
