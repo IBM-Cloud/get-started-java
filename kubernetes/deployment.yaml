@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: get-started-java
-        image: getstartedjava.azurecr.io/java/myapp:v1.0.0
+        image: getstartedjava.azurecr.io/myaksdemo
         ports:
         - containerPort: 9080
         imagePullPolicy: Always
