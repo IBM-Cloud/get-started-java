@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: "myaksdemo-f366"
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: "myaksdemo-f366"
+  template:
+    metadata:
+      labels:
+        app: "myaksdemo-f366"
+    spec:
+      containers:
+        - name: "myaksdemo-f366"
+          image: "getstartedjava.azurecr.io/myaksdemo"
+          ports:
+          - containerPort: 9080
