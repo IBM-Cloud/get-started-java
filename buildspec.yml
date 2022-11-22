@@ -8,7 +8,6 @@ env:
     IMAGE_REPO_NAME: "myapp"
     IMAGE_TAG: "v1.0.0"
     AWS_DEFAULT_REGION: "us-west-2"
-    - echo variables
 
 phases:
   install:
