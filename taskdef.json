@@ -1,0 +1,28 @@
+{
+    "executionRoleArn": "arn:aws:iam::452911533244:role/ecsTaskExecutionRole",
+    "containerDefinitions": [
+        {
+            "portMappings": [
+                {
+                    "hostPort": 9080,
+                    "protocol": "tcp",
+                    "containerPort": 9080
+                }
+            ],
+            "image": "452911533244.dkr.ecr.us-west-2.amazonaws.com/myapp:v1.0.0",
+            "essential": true,
+            "name": "ecs-aspnet-container"
+        }
+    ],
+    "memory": "512",
+    "compatibilities": [
+        "EC2",
+        "FARGATE"
+    ],
+    "family": "ecs-aspnet-task",
+    "requiresCompatibilities": [
+        "FARGATE"
+    ],
+    "networkMode": "awsvpc",
+    "cpu": "256"
+}
