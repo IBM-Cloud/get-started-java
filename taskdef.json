@@ -11,7 +11,7 @@
             ],
             "image": "452911533244.dkr.ecr.us-west-2.amazonaws.com/myapp:v1.0.0",
             "essential": true,
-            "name": "ecs-aspnet-container"
+            "name": "java-azul-verde-container"
         }
     ],
     "memory": "512",
@@ -19,7 +19,7 @@
         "EC2",
         "FARGATE"
     ],
-    "family": "ecs-aspnet-task",
+    "family": "get-azul-verde-task",
     "requiresCompatibilities": [
         "FARGATE"
     ],
