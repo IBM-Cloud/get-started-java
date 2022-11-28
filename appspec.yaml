@@ -5,5 +5,5 @@ Resources:
       Properties:
         TaskDefinition: <TASK_DEFINITION>
         LoadBalancerInfo:
-          ContainerName: "ecs-aspnet-container"
+          ContainerName: "java-azul-verde-container"
           ContainerPort: 9080
