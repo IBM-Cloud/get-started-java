@@ -1,0 +1,50 @@
+version: 0.2
+
+env:
+  variables:
+    AWS_ACCOUNT_ID: "452911533244"
+    CLUSTER: "poc"
+    SERVICE: "poc-service"
+    IMAGE_REPO_NAME: "myapp"
+    IMAGE_TAG: "v1.0.0"
+    AWS_DEFAULT_REGION: "us-west-2"
+
+phases:
+  install:
+    commands:
+      - echo Entered the install phase...
+      - wget https://download.java.net/java/GA/jdk13.0.1/cec27d702aa74d5a8630c65ae61e4305/9/GPL/openjdk-13.0.1_linux-x64_bin.tar.gz
+      - tar -xvf openjdk-13.0.1_linux-x64_bin.tar.gz
+      - mv jdk-13.0.1 /opt/
+      - JAVA_HOME='/opt/jdk-13.0.1'
+      - PATH="$JAVA_HOME/bin:$PATH"
+      - export PATH
+      - echo java termina install
+      - wget https://mirrors.estointernet.in/apache/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz
+      - tar -xvf apache-maven-3.6.3-bin.tar.gz
+      - mv apache-maven-3.6.3 /opt/
+      - M2_HOME='/opt/apache-maven-3.6.3'
+      - PATH="$M2_HOME/bin:$PATH"
+      - export PATH
+    finally:
+      - echo This always runs even if the update or install command fails 
+  pre_build:
+    commands:
+      - echo Ingresando a AWS ECR...
+      - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
+
+  build:
+    commands:
+      - echo Maven empezar clean and install
+      - mvn clean
+      - mvn install
+      - echo Creando imagen Docker
+      - docker build -t myapp:v1.0.0 .
+      - docker tag $IMAGE_REPO_NAME:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
+      - echo Copiando imagen de Docker a repositorio...
+      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
+
+  post_build:
+    commands:
+      - echo actualizando servicio fargate...
+      - aws ecs update-service --cluster $CLUSTER --service $SERVICE --force-new-deployment
